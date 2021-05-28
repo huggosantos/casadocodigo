@@ -21,7 +21,7 @@ public class AdminLivrosBean {
 	private Livro livro = new Livro();
 	
 	@Inject
-	private LivroDao dao;
+	private LivroDao LivroDao;
 	
 	@Inject
 	private AutorDao autorDao;
@@ -34,9 +34,10 @@ public class AdminLivrosBean {
 		for (Integer autorId : autoresId) {
 			livro.getAutores().add(new Autor(autorId));			
 		}
-		dao.salvar(livro);
+		LivroDao.salvar(livro);
 		System.out.println("Livro Cadastro"+ this.livro);
 		this.livro = new Livro();
+		this.autoresId = new ArrayList<>();
 	}
 	
 	public List<Autor> getAutores(){
