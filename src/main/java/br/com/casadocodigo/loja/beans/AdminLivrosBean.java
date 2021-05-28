@@ -30,7 +30,7 @@ public class AdminLivrosBean {
 
 	
 	@Transactional
-	public void salvar() {
+	public String salvar() {
 		for (Integer autorId : autoresId) {
 			livro.getAutores().add(new Autor(autorId));			
 		}
@@ -38,6 +38,8 @@ public class AdminLivrosBean {
 		System.out.println("Livro Cadastro"+ this.livro);
 		this.livro = new Livro();
 		this.autoresId = new ArrayList<>();
+		
+		return "/livros/lista?faces-redirect=true";
 	}
 	
 	public List<Autor> getAutores(){
