@@ -25,11 +25,11 @@
 	</div>
 	<div>
 		<h:outputLabel value="Autores" for="Autores"/>
-		<h:selectManyCheckbox>
-			<f:selectItems value="#{#{adminLivrosBean.autores}}"
-			var="autor" itemValue="autor.id" itemLabel="#{autor.nome}"
+		<h:selectManyListbox value="#{adminLivrosBean.autoresId}" converter="javax.faces.Integer">
+			<f:selectItems value="#{adminLivrosBean.autores}"
+			var="autor" itemValue="#{autor.id}" itemLabel="#{autor.nome}"
 			/>
-		</h:selectManyCheckbox>
+		</h:selectManyListbox>
 	</div>
 	<h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}"/>
 </h:form>
