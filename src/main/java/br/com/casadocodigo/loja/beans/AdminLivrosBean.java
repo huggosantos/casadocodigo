@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
@@ -38,6 +40,11 @@ public class AdminLivrosBean {
 		System.out.println("Livro Cadastro"+ this.livro);
 		this.livro = new Livro();
 		this.autoresId = new ArrayList<>();
+		
+		// Enviado a instancia da mensagem para o proximo contexto, onde a mensagem ira durar 2 requests 
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+		// Criando mensagem para o usuario
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Livro cadastrado com sucesso!"));    
 		
 		return "/livros/lista?faces-redirect=true";
 	}
