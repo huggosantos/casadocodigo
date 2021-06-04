@@ -29,6 +29,12 @@ public class AdminLivrosBean {
 	private AutorDao autorDao;
 	
 	private List<Integer> autoresId = new ArrayList<>();
+	
+	private FacesContext context;
+	
+	public AdminLivrosBean() {
+		context = FacesContext.getCurrentInstance();
+	}
 
 	
 	@Transactional
@@ -42,9 +48,10 @@ public class AdminLivrosBean {
 		this.autoresId = new ArrayList<>();
 		
 		// Enviado a instancia da mensagem para o proximo contexto, onde a mensagem ira durar 2 requests 
-		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+		
+		context.getExternalContext().getFlash().setKeepMessages(true);
 		// Criando mensagem para o usuario
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Livro cadastrado com sucesso!"));    
+		context.addMessage(null, new FacesMessage("Livro cadastrado com sucesso!"));    
 		
 		return "/livros/lista?faces-redirect=true";
 	}
