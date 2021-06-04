@@ -30,13 +30,9 @@ public class AdminLivrosBean {
 	
 	private List<Integer> autoresId = new ArrayList<>();
 	
+	@Inject
 	private FacesContext context;
-	
-	public AdminLivrosBean() {
-		context = FacesContext.getCurrentInstance();
-	}
-
-	
+		
 	@Transactional
 	public String salvar() {
 		for (Integer autorId : autoresId) {
