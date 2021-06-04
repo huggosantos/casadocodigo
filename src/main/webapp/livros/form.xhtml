@@ -7,32 +7,36 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:form>
-	<h:messages />
 	<div>
 		<h:outputLabel value="Título" for="Título"/>
-		<h:inputText value="#{adminLivrosBean.livro.titulo}" required="true"/>		
+		<h:inputText value="#{adminLivrosBean.livro.titulo}" required="true" id="titulo"/>
+		<h:message for="titulo" />		
 	</div>
 	<div>
 		<h:outputLabel value="Descricao" for="Descricao"/>
-		<h:inputTextarea rowns="4" cols="20" value="#{adminLivrosBean.livro.descricao}" required="true"/>		
+		<h:inputTextarea rowns="4" cols="20" value="#{adminLivrosBean.livro.descricao}" required="true" id="descricao"/>
+		<h:message for="descricao" />				
 	</div>
 	<div>
 		<h:outputLabel  value="Nº de Paginas" for="Número de Paginas" />
-		<h:inputText value="#{adminLivrosBean.livro.numeroPaginas}" required="true"> 
+		<h:inputText value="#{adminLivrosBean.livro.numeroPaginas}" required="true" id="numeroPaginas">			 
 		</h:inputText>		
+		<h:message for="numeroPaginas" />	
 	</div>
 	<div>
 		<h:outputLabel value="Preço" for="Preço"/>
-		<h:inputText  value="#{adminLivrosBean.livro.preco}" required="true">
+		<h:inputText  value="#{adminLivrosBean.livro.preco}" required="true" id="preco">		
 		</h:inputText>		
+		<h:message for="preco" />
 	</div>
 	<div>
 		<h:outputLabel value="Autores" for="Autores"/>
-		<h:selectManyListbox value="#{adminLivrosBean.autoresId}" converter="javax.faces.Integer">
+		<h:selectManyListbox value="#{adminLivrosBean.autoresId}" converter="javax.faces.Integer" id="autores">
 			<f:selectItems value="#{adminLivrosBean.autores}"
 			var="autor" itemValue="#{autor.id}" itemLabel="#{autor.nome}"
 			/>
 		</h:selectManyListbox>
+		<h:message for="autores" />
 	</div>
 	<h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}"/>
 </h:form>
