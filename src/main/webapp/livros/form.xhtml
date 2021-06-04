@@ -19,13 +19,11 @@
 	<div>
 		<h:outputLabel  value="Nº de Paginas" for="Número de Paginas" />
 		<h:inputText value="#{adminLivrosBean.livro.numeroPaginas}" required="true"> 
-			<f:validateLongRange minimum="80"/>
 		</h:inputText>		
 	</div>
 	<div>
 		<h:outputLabel value="Preço" for="Preço"/>
 		<h:inputText  value="#{adminLivrosBean.livro.preco}" required="true">
-			<f:validateLongRange minimum="20"/>
 		</h:inputText>		
 	</div>
 	<div>
