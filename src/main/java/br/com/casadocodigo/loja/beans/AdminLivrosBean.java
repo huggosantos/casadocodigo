@@ -28,20 +28,15 @@ public class AdminLivrosBean {
 	@Inject
 	private AutorDao autorDao;
 	
-	private List<Integer> autoresId = new ArrayList<>();
-	
 	@Inject
 	private FacesContext context;
 		
 	@Transactional
 	public String salvar() {
-		for (Integer autorId : autoresId) {
-			livro.getAutores().add(new Autor(autorId));			
-		}
+		
 		LivroDao.salvar(livro);
 		System.out.println("Livro Cadastro"+ this.livro);
 		this.livro = new Livro();
-		this.autoresId = new ArrayList<>();
 		
 		// Enviado a instancia da mensagem para o proximo contexto, onde a mensagem ira durar 2 requests 
 		
@@ -62,14 +57,6 @@ public class AdminLivrosBean {
 
 	public void setLivro(Livro livro) {
 		this.livro = livro;
-	}
-
-	public List<Integer> getAutoresId() {
-		return autoresId;
-	}
-
-	public void setAutoresId(List<Integer> autoresId) {
-		this.autoresId = autoresId;
 	}
 
 }

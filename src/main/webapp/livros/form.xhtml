@@ -30,13 +30,25 @@
 		<h:message for="preco" />
 	</div>
 	<div>
+		<h:outputLabel value="Data de Publicação" for="dataPublicação"/>
+		<h:inputText  value="#{adminLivrosBean.livro.dataPublicacao}" required="true" id="dataPublicação">
+			<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>		
+		</h:inputText>		
+		<h:message for="dataPublicação" />
+	</div>
+	<div>
 		<h:outputLabel value="Autores" for="Autores"/>
-		<h:selectManyListbox value="#{adminLivrosBean.autoresId}" converter="javax.faces.Integer" id="autores">
+		<h:selectManyListbox value="#{adminLivrosBean.livro.autores}" converter="autorConverter" id="autores">
 			<f:selectItems value="#{adminLivrosBean.autores}"
-			var="autor" itemValue="#{autor.id}" itemLabel="#{autor.nome}"
+			var="autor" itemValue="#{autor}" itemLabel="#{autor.nome}"
 			/>
 		</h:selectManyListbox>
 		<h:message for="autores" />
+	</div>
+	<div>
+		<h:outputLabel value="Capa do Livro"/>
+		<h:inputFile value="#{adminLivrosBean.capaLivro}" id="capaLivro"/>
+		<h:message for="capaLivro">
 	</div>
 	<h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}"/>
 </h:form>
