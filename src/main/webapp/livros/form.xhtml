@@ -6,7 +6,7 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<h:form>
+<h:form enctype="multipart/form-data">
 	<div>
 		<h:outputLabel value="Título" for="Título"/>
 		<h:inputText value="#{adminLivrosBean.livro.titulo}" required="true" id="titulo"/>
@@ -32,7 +32,7 @@
 	<div>
 		<h:outputLabel value="Data de Publicação" for="dataPublicação"/>
 		<h:inputText  value="#{adminLivrosBean.livro.dataPublicacao}" required="true" id="dataPublicação">
-			<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>		
+				
 		</h:inputText>		
 		<h:message for="dataPublicação" />
 	</div>
@@ -48,7 +48,7 @@
 	<div>
 		<h:outputLabel value="Capa do Livro"/>
 		<h:inputFile value="#{adminLivrosBean.capaLivro}" id="capaLivro"/>
-		<h:message for="capaLivro">
+		<h:message for="capaLivro" />
 	</div>
 	<h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}"/>
 </h:form>
