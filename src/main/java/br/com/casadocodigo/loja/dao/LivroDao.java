@@ -2,14 +2,23 @@ package br.com.casadocodigo.loja.dao;
 
 import java.util.List;
 
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import br.com.casadocodigo.loja.models.Livro;
 
+/*Uso do @Stateful(controla o tempo de status, ou tempo de vida) do EJB em conjunto com @PersistenceContext(type=PersistenceContextType.EXTENDED)
+ * para deixar o manger com a conexão aberta por mais tempo, ou seja, por mais um de um request ou enquando a ainda estiver vida, depois o CDI ira derrubar. 
+ * O JPA ainda está ligado ao EJP
+ * 
+ * 
+ * */
+@Stateful
 public class LivroDao {
 	
-	@PersistenceContext
+	@PersistenceContext(type=PersistenceContextType.EXTENDED)
 	private EntityManager manager;
 	
 	public void salvar(Livro livro) {
@@ -38,10 +47,11 @@ public class LivroDao {
     }
 
 	public Livro buscarPorId(Integer id) {
-		String jpql = "select l from Livro l join fetch l.autores where l.id =:id";
+		return manager.find(Livro.class, id);
+		/*String jpql = "select l from Livro l join fetch l.autores where l.id =:id";
 		return manager.createQuery(jpql, Livro.class)
 				.setParameter("id",id)
-				.getSingleResult();
+				.getSingleResult();*/
 	}
 
 
