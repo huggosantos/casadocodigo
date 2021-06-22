@@ -9,35 +9,43 @@
 <!-- As mensagens criadas aparecerão abaixo -->
 <h:messages />
 
-<h:dataTable var="livro" value="#{adminListaLivrosBean.livros}">
-	<h:column>
-		<f:facet name="header">Título</f:facet>
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+</h:head>
+
+<h:body>
+
+	<div class="container">
+		<h:dataTable var="livro" value="#{adminListaLivrosBean.livros}"
+			class="table table-bordered table-striped">
+			<h:column>
+				<f:facet name="header">Título</f:facet>
             #{livro.titulo}
         </h:column>
-	<h:column>
-		<f:facet name="header">Descrição</f:facet>
+			<h:column>
+				<f:facet name="header">Descrição</f:facet>
             #{livro.descricao}
         </h:column>
-	<h:column>
-		<f:facet name="header">Páginas</f:facet>
+			<h:column>
+				<f:facet name="header">Páginas</f:facet>
             #{livro.numeroPaginas}
         </h:column>
-	<h:column>
-		<f:facet name="header">Preço</f:facet>
+			<h:column>
+				<f:facet name="header">Preço</f:facet>
             #{livro.preco}
         </h:column>
-	<h:column>
-		<f:facet name="header">Autores</f:facet>
-		<ui:repeat value="#{livro.autores}" var="autor">
+			<h:column>
+				<f:facet name="header">Autores</f:facet>
+				<ui:repeat value="#{livro.autores}" var="autor">
                 #{autor.nome},
             </ui:repeat>
-	</h:column>
-	<h:column>
-		<f:facet name="header">Capa</f:facet>
-		<a href="#{request.contextPath}/file/#{livro.capaPath}">
-			#{livro.capaPath}
-		</a>
-	</h:column>
-</h:dataTable>
-
+			</h:column>
+			<h:column>
+				<f:facet name="header">Capa</f:facet>
+				<img height="100px" width="60px"
+					src="#{request.contextPath}/file/#{livro.capaPath}" />
+			</h:column>
+		</h:dataTable>
+	</div>
+</h:body>
 </html>
