@@ -22,4 +22,20 @@ public class LivroDao {
 
         return manager.createQuery(jpql, Livro.class).getResultList();
     }
+	
+	public List<Livro> ultimosLancamentos() {
+        String jpql = "select l from Livro l order by l.id desc";
+        return manager.createQuery(jpql, Livro.class)
+                .setMaxResults(5)
+                .getResultList();
+    }
+
+    public List<Livro> demaisLivros() {
+        String jpql = "select l from Livro l order by l.id desc";
+        return manager.createQuery(jpql, Livro.class)
+                .setFirstResult(5)
+                .getResultList();
+    }
+
+
 }
